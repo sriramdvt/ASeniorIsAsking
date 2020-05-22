@@ -14,11 +14,15 @@ Debian / Debian-based systems -
 
 ```bash
 sudo apt-get update && sudo apt-get install docker docker-compose
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 ```
 
 Arch / Arch-based systems -
 ```bash
 sudo pacman -S docker docker-compose
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 ```
 
 The next step is to build the docker containers, to do that run the following
@@ -26,13 +30,13 @@ steps
 
 ```bash
 cd ./backend
-docker-compose build
+sudo docker-compose build
 ```
 
 Now that the containers are built, it time to start the server
 
 ```bash
-docker-compose up
+sudo docker-compose up
 ```
 
 If all goes well, you should have a server running at `localhost:5000`,
