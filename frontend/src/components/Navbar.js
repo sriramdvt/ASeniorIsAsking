@@ -12,12 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  button: {
+      textTransform: "none"
   }
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -25,8 +27,8 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             ASeniorIsAsking
           </Typography>
-          <Button color="inherit">Find at DLF</Button>
-          <Button color="inherit">I am at DLF</Button>
+          <Button className={classes.button} color="inherit">Find at DLF</Button>
+          <Button className={classes.button} color="inherit">I am at DLF</Button>
         </Toolbar>
       </AppBar>
     </div>
