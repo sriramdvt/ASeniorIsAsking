@@ -1,43 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 
-
-function Navbar() {
-  return (
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-  );
-
-}
-//ReactDOM.render(<Navbar />, document.querySelector('#root'));
-
-const useStyles = makeStyles({
-    root: {
-      width: "100%",
-    },
-  });
-
-export default function SimpleBottomNavigation() {
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-  
-    return (
-      <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        showLabels
-        className={classes.root}
-      >
-        <BottomNavigationAction label="Find at DLF"/>
-        <BottomNavigationAction label="I am at DLF"/>
-
-      </BottomNavigation>
-    );
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
   }
+}));
+
+export default function ButtonAppBar() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            ASeniorIsAsking
+          </Typography>
+          <Button color="inherit">Find at DLF</Button>
+          <Button color="inherit">I am at DLF</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}
