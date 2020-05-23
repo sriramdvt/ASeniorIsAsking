@@ -1,6 +1,6 @@
 # ASeniorIsAsking
 
-It is 3 am. You just finished working on a project of yours and the night cravings hit hard. What would you *not* do for a Tawa Bonda or a Shawarma? The only thing you wouldn't do is walk all the way to DLF of course. Your message "koi DLF me hai kya" on a WhatsApp group will just get lost on the typical 3 a.m. spam. If only there were a way for you to talk to fachhas already at DLF...
+It is 3 am. You just finished working on a project of yours and the night cravings hit *hard*. What would you *not* do for a Tawa Bonda or a Shawarma? The only thing you wouldn't do is walk all the way to DLF of course. Your message "koi DLF me hai kya" on a WhatsApp group will just get lost in the typical 3 a.m. spam. If only there were a way for you to talk to fachhas already at DLF...
 
 ## Setting up the development environment
 ### Backend
