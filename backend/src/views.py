@@ -18,7 +18,6 @@ def index():
 def order_request():
     if request.is_json:
         # request.get_json() returns a converted dict
-        print("got till here")
         incoming_dict = request.get_json()
         if model._redis.is_orderer_json_valid(incoming_dict) is False:
             return_dict = {
@@ -55,25 +54,6 @@ def accepted_orders():
     return json.dumps(accepted_orders_dict)
 
 
-@api_bp.route("/accepted_orders/<order_id>", methods=["GET"])
-def particular_order(order_id):
-    if model._redis.valid_order(order_id) is False:
-        return_dict = {
-            "message": "Invalid Order ID."
-        }
-        return json.dumps(return_dict), 404
-    elif model._redis.has_it_been_accepted(order_id):
-        # receives a python dictionary of the json that was stored.
-        accepted_dict = model._redis.get_particular_done(order_id)
-        accepted_json = json.dumps(accepted_dict)
-        return accepted_json, 200
-    else:
-        return_dict = {
-            "message": "Your order is still pending."
-        }
-        return json.dumps(return_dict), 200
-
-
 @api_bp.route("/accept_order", methods=["POST"])
 def accept_order():
     if request.is_json:
@@ -84,7 +64,6 @@ def accept_order():
                 "message": "Invalid JSON."
             }
             return json.dumps(return_dict), 400
-
 
         order_id = accepter_dict["order_id"]
         if model._redis.has_it_been_accepted(order_id):
@@ -136,10 +115,10 @@ def delete_order(order_id):
 def view_order(order_id):
     if model._redis.valid_order(order_id):
         if model._redis.has_it_been_accepted(order_id):
-            return model._redis.get_particular_done(order_id), 200
+            return json.dumps(model._redis.get_particular_done(order_id)), 200
         else:
-            return model._redis.get_particular_pending(order_id), 200
-    else:
+            return json.dumps(model._redis.get_particular_pending(order_id)), 200
+
         return_dict = {
             "message": "Invalid Order ID."
         }
@@ -156,17 +135,24 @@ def edit_order(order_id):
             return json.dumps(return_dict), 400
         else:
             if request.is_json:
-                incoming_json = request.get_json()
-                if(model._redis.edit_order(order_id, incoming_json)):
+                incoming_dict = request.get_json()
+                if model._redis.is_orderer_json_valid(incoming_dict) is False:
                     return_dict = {
-                        "message": "Order updated successfully."
+                        "message": "Invalid JSON."
+                    }
+                    return json.dumps(return_dict), 400
+                else:
+                    if(model._redis.edit_order(order_id, incoming_dict))
+                    return_dict = {
+                        "message": "Your order has been updated successfully."
                     }
                     return json.dumps(return_dict), 200
-                else:
-                    return_dict = {
-                        "message": "There was an error updating your order."
-                    }
-                    return json.dumps(return_dict), 203
+                    else:
+                        return_dict = {
+                            "message": "There was an error updating your order."
+                        }
+                        return json.dumps(return_dict), 203
+
             else:
                 return_dict = {
                     "message": "JSON not received."

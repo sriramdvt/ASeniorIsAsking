@@ -21,7 +21,13 @@ class RedisConnection():
             num = int(order_id)
         except ValueError:
             return False
-        return (num <= int(self.conn.get("number_of_orders")) and num >= 1)
+        if(num <= int(self.conn.get("number_of_orders")) and num >= 1):
+            if(self.conn.hget("deleted_orders", order_id)):
+                return False
+            else:
+                return True
+        else:
+            return False
 
     def pending_order_add(self, incoming_dict):
         self.conn.incr("number_of_orders", amount=1)
@@ -64,6 +70,35 @@ class RedisConnection():
         merged_json = json.dumps(merged_dict)
         self.conn.hset("accepted_orders", key=order_id, value=merged_json)
         self.conn.hdel("pending_orders", order_id)
+
+    def is_orderer_json_valid(self, incoming_dict):
+        print("got till here")
+        required_keys = ["name", "Items", "contact"]
+        for key in required_keys:
+            if key not in incoming_dict:
+                return False
+        if len(incoming_dict["Items"]) <= 0:
+            return False
+        return True
+
+    def is_acceptor_json_valid(self, incoming_dict):
+        required_keys = ["acceptor_name", "acceptor_contact", "order_id"]
+        for key in required_keys:
+            if key not in incoming_dict:
+                return False
+        return True
+
+    def delete_order(self, order_id):
+        order_json = self.conn.hget("pending_orders", order_id)
+        self.conn.hset("deleted_orders", key=order_id, value=order_json)
+        return self.conn.hdel("pending_orders", order_id)
+
+    def edit_order(self, order_id, updated_dict):
+        if(self.conn.hdel("pending_orders", order_id)):
+            updated_json = json.dumps(updated_dict)
+            return self.conn.hset("pending_orders", key=order_id, value=updated_json)
+        else:
+            return False
 
 
     def is_orderer_json_valid(self, incoming_dict):
