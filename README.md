@@ -5,10 +5,10 @@ It's past midnight. You're hangry. Food is what you need. However, you're lazy t
 <img src="./readme_media/screenshot.gif"/>
 
 ## Contributors
-[![](https://github.com/ishaanshah.png?size=200)](https://github.com/ishaanshah)
-[![](https://github.com/rahul-goel.png?size=200)](https://github.com/rahul-goel)
-[![](https://github.com/Rutvij-1.png?size=200)](https://github.com/Rutvij-1)
-[![](https://github.com/sriramdvt.png?size=200)](https://github.com/sriramdvt)
+[![](https://github.com/ishaanshah.png?size=100)](https://github.com/ishaanshah)
+[![](https://github.com/rahul-goel.png?size=100)](https://github.com/rahul-goel)
+[![](https://github.com/Rutvij-1.png?size=100)](https://github.com/Rutvij-1)
+[![](https://github.com/sriramdvt.png?size=100)](https://github.com/sriramdvt)
 
 
 ## Setting up the development environment
