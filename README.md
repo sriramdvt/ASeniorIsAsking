@@ -4,6 +4,10 @@ It's past midnight. You're hangry. Food is what you need. However, you're lazy t
 
 <img src="./readme_media/screenshot.gif"/>
 
+## Contributors
+[![](https://github.com/sriramdvt.png?size=50)](https://github.com/sriramdvt)
+
+
 ## Setting up the development environment
 ### Frontend
 The frontend is bootstrapped using `Create React App`. To start the frontend
