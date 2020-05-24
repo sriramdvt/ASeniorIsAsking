@@ -17,11 +17,7 @@ const useStyles = makeStyles({
         boxShadow: "0 4px 20px 0 rgba(0,0,0,0.12)"
       }
     },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
+
   title: {
     fontSize: 14,
   },
@@ -35,7 +31,6 @@ const useStyles = makeStyles({
 
 export default function SimpleCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root} variant="outlined">

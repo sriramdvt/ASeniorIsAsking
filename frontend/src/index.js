@@ -14,7 +14,7 @@ import Food from "./components/Food";
 
 ReactDOM.render(<Navbar />, document.querySelector('#root'));
 ReactDOM.render(<Food />, document.querySelector('#cards'));
-
+ReactDOM.render(<Food />, document.querySelector('#cards1'));
 
 
 // If you want your app to work offline and load faster, you can change
