@@ -1,6 +1,6 @@
 # ASeniorIsAsking
 
-It's past midnight. You're hangry. Food is what you need. However, you're lazy too. What would you *not* do for a Tawa Bonda or a Shawarma? Only thing you won't do is walk all the way to DLF of course. If only you knew a fachcha who is already at DLF... Inspired from the 3 a.m. chats on the UG2k19 WhatsApp Groups, we present to you the only app you'll ever need to fulfill your heart's desire before your regular 3-hour sleep.
+It's past midnight. You're hangry. Food is what you need. However, you're lazy too. What would you *not* do for a Tawa Bonda or a Shawarma? The only thing you wouldn't do is walk all the way to DLF of course. If only you knew a fachcha who is already at DLF... Inspired from the 3 a.m. chats on the UG2k19 WhatsApp Groups, we present to you the only app you'll ever need to fulfill your heart's - or rather your stomach's - desire before your regular 3-hour sleep.
 
 <img src="./readme_media/screenshot.gif"/>
 
@@ -28,6 +28,7 @@ steps
 
 ```bash
 cd frontend
+yarn
 yarn start
 ```
 
